@@ -10,7 +10,7 @@ public class PriorityQueue extends  DynamicArray{
      */
     public PriorityQueue() {
         // lisame esimese elemendi, et alates yhest hakataks t2itma
-        minBinHeap.add(-1);
+        minBinHeap.add(-11);
     }
 
     public void enqueue (int x){
@@ -42,7 +42,14 @@ public class PriorityQueue extends  DynamicArray{
     }
 
     public int dequeue(){
-        int n = 0;
+        int n = 0, asendatav;
+        n = minBinHeap.get(1);
+        asendatav = minBinHeap.get(minBinHeap.len()-1);
+
+        minBinHeap.put(asendatav, 1);
+        minBinHeap.put(n, minBinHeap.len()-1);
+
+        minBinHeap.rem();
 
         return n;
     }
