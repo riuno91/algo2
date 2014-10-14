@@ -47,7 +47,7 @@ public class PriorityQueue extends  DynamicArray{
         n = minBinHeap.get(1);
         last = minBinHeap.get(minBinHeap.len()-1);
 
-        minBinHeap.put(last, 1);
+        minBinHeap.put(last, 1);//asdasd
         minBinHeap.put(n, minBinHeap.len()-1);
 
         minBinHeap.rem();
