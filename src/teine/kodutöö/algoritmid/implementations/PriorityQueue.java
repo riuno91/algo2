@@ -43,11 +43,13 @@ public class PriorityQueue extends  DynamicArray{
 
     public int dequeue(){
 
-        int n = 0, last = 0;
-        n = minBinHeap.get(1);
+        int n = 0, last = 0; //int-d, yks viimane teine esimene element
+
+        n = minBinHeap.get(1); // v6tan esimese ja viimase elemendi m2llu
         last = minBinHeap.get(minBinHeap.len()-1);
 
-        minBinHeap.put(last, 1);//asdasd
+        // panen viimase elemendi esimeseks ja esimese viimasele kohale ning eemaldan viimase elemedi (see mis kunagi oli 1)
+        minBinHeap.put(last, 1);
         minBinHeap.put(n, minBinHeap.len()-1);
 
         minBinHeap.rem();
