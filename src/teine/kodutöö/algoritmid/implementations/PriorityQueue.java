@@ -42,11 +42,12 @@ public class PriorityQueue extends  DynamicArray{
     }
 
     public int dequeue(){
-        int n = 0, asendatav;
-        n = minBinHeap.get(1);
-        asendatav = minBinHeap.get(minBinHeap.len()-1);
 
-        minBinHeap.put(asendatav, 1);
+        int n = 0, last = 0;
+        n = minBinHeap.get(1);
+        last = minBinHeap.get(minBinHeap.len()-1);
+
+        minBinHeap.put(last, 1);
         minBinHeap.put(n, minBinHeap.len()-1);
 
         minBinHeap.rem();
