@@ -24,7 +24,7 @@ public class DynamicArray {
 
     public DynamicArray(){
           array = new int[0];
-          size = -1;
+        size = -1;
     }
     /**
      * lisame elemendi dünaamilisse massiivi,

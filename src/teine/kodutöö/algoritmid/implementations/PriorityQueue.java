@@ -4,12 +4,13 @@ package teine.kodutöö.algoritmid.implementations;
  * Created by Riuno on 14.10.2014.
  */
 public class PriorityQueue extends  DynamicArray{
-
+    DynamicArray minBinHeap;
     /**
      *
      */
     public PriorityQueue() {
-        super();
+        // lisame esimese elemendi, et alates yhest hakataks t2itma
+        minBinHeap.add(-1);
     }
 
     public void enqueue (int x){
