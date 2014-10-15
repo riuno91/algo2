@@ -18,6 +18,10 @@ public class PriorityQueue extends  DynamicArray{
         nextpos = 1;
     }
 
+    /**
+     * lisame elemendi järjekorda
+     * @param x
+     */
     public void enqueue (int x){
 
         int positsion = nextpos; // int x-i positsioon, kuhu lisatakse

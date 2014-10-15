@@ -18,12 +18,12 @@ public class DynamicArray {
      * create()
      */
     public DynamicArray(int n){
-          array = new int[n];
-          size = -1;
+        array = new int[n];
+        size = -1;
     }
 
     public DynamicArray(){
-          array = new int[0];
+        array = new int[0];
         size = -1;
     }
     /**
@@ -84,7 +84,7 @@ public class DynamicArray {
      */
     public void put(int x, int i){
         if(i<=size){
-             array[i]=x;
+            array[i]=x;
         }
     }
 
