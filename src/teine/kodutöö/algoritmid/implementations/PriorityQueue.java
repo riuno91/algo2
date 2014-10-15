@@ -7,6 +7,7 @@ import com.sun.xml.internal.bind.v2.TODO;
  */
 public class PriorityQueue extends  DynamicArray{
     DynamicArray minBinHeap;
+    int nextpos;
     /**
      *
      */
@@ -14,6 +15,7 @@ public class PriorityQueue extends  DynamicArray{
         // lisame esimese elemendi, et alates yhest hakataks t2itma
         minBinHeap = new DynamicArray();
         minBinHeap.add(-11);
+        nextpos = 1;
     }
 
     /**
@@ -22,38 +24,31 @@ public class PriorityQueue extends  DynamicArray{
      */
     public void enqueue (int x){
 
-        int positsion;  // int x-i positsiooni jaoks
+        int positsion = nextpos; // int x-i positsioon, kuhu lisatakse
         minBinHeap.add(x); // lisain xi alguses arraysse
 
-        positsion = minBinHeap.len() - 1; //TODO: VIGAA!!!, võtab viimase positsiooni, loogikaviga
-        // kuna x on viimane lisatu, v6tan ta postisiooni array viimase elemendi j2rgi
         while(true){
+
             int upParentPos, parent;  // int-d k6rval oleva elemendi jaoks
 
             //kontrollin ega element ei ole esimene
             if (positsion <= 1){
                 break;
             }
-
             upParentPos = positsion/2;   // v6tan ylemelemendi positsiooni (bin kuhjal alati ylemine postisoon /2 v2iksem)
             parent = minBinHeap.get(upParentPos); //v6tan elemendi arvulise v22rtuse
 
             if(parent < x){//kui parent on v2iksem x-st(min kuhja reegel), siis l6petan
                 break;
             }else{ // vastasel korral vahetan positsioonid
-                System.out.println("Seis enne sisestamist");
-                kontroll();
                 minBinHeap.put(x, upParentPos);
-                System.out.println("Seis peale x koha muutmist sisestamist ");
-                kontroll();
                 minBinHeap.put(parent, positsion);
-                System.out.println("positsion = " + positsion);
-                System.out.println("Seis peale parenti koha muutmist sisestamist ");
-                kontroll();
             }
 
             positsion = upParentPos; // m22ran elemendi positsiooniks ylemelemendi positsiooni
         }
+
+        nextpos++;
     }
 
     public int dequeue(){

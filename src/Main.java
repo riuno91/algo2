@@ -20,13 +20,19 @@ public class Main {
 
         PriorityQueue pr = new PriorityQueue();
 
+        pr.enqueue(10);
+        pr.enqueue(20);
+        pr.enqueue(9);
         pr.enqueue(18);
         pr.enqueue(12);
-        pr.enqueue(20);
-        pr.enqueue(8);
         pr.enqueue(6);
+        pr.enqueue(5);
+        pr.enqueue(3);
+        pr.enqueue(9);
+        pr.enqueue(8);
 
-        //System.out.println(pr.dequeue());
+
+        System.out.println(pr.dequeue());
 
 
     }
