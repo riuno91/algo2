@@ -16,6 +16,10 @@ public class PriorityQueue extends  DynamicArray{
         minBinHeap.add(-11);
     }
 
+    /**
+     * lisame elemendi järjekorda
+     * @param x
+     */
     public void enqueue (int x){
 
         int positsion;  // int x-i positsiooni jaoks
