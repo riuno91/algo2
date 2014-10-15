@@ -49,23 +49,14 @@ public class PriorityQueue extends  DynamicArray{
 
     public int dequeue(){
 
-       /* for (int i = 1; i < minBinHeap.len()-1;i++){
-            System.out.print(minBinHeap.get(i) + " ");
-        }
-        System.out.println();*/
-
-
         int n = 0, last = 0; //int-d, yks viimane teine esimene element
 
         n = minBinHeap.get(1); // v6tan esimese ja viimase elemendi m2llu
-        last = minBinHeap.get(minBinHeap.len()-1);
-
-        // panen viimase elemendi esimeseks ja esimese viimasele kohale ning eemaldan viimase elemedi (see mis kunagi oli 1)
-        minBinHeap.put(last, 1);
-        minBinHeap.put(n, minBinHeap.len()-1);
-
+        last = minBinHeap.get(nextpos-1);
+        minBinHeap.put(last,1);
         minBinHeap.rem();
 
+        nextpos--;
         return n;
     }
 
@@ -77,7 +68,35 @@ public class PriorityQueue extends  DynamicArray{
 
     }
 
-    void kontroll(){
+    private void organizeHeap(){
+        int smalPos = 1, leftParent = 2,  rightParent = 3;
+
+        while(true){
+
+            if (leftParent < minBinHeap.len() && minBinHeap.get(leftParent) < minBinHeap.get(smalPos)) {
+                smalPos = leftParent;
+            }
+
+            if (rightParent < minBinHeap.len() && minBinHeap.get(rightParent) < minBinHeap.get(smalPos)) {
+                smalPos = rightParent;
+            }
+
+            if (smalPos != 1){
+                int smalValue = minBinHeap.get(smalPos);
+                int firstVal = minBinHeap.get(1);
+
+                minBinHeap.put(firstVal,smalPos);
+                minBinHeap.put(smalValue, 1);
+                smalPos = 1; leftParent = 2;  rightParent = 3;
+
+            }else break;
+
+
+        }
+
+    }
+
+    private void kontroll(){
         for (int i = 1; i < minBinHeap.len()-1;i++){
             System.out.print(minBinHeap.get(i) + " ");
         }
