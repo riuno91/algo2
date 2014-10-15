@@ -35,5 +35,32 @@ public class Main {
         System.out.println(pr.dequeue());
 
 
+        /*
+
+        Queue que = new Queue();
+
+        que.enqueue(1);
+        que.enqueue(2);
+        que.enqueue(3);
+        que.enqueue(4);
+
+
+        que.enqueue(5);
+        que.enqueue(6);
+        que.enqueue(7);
+        que.enqueue(8);
+        que.enqueue(9);
+
+
+        que.dequeue();
+        que.dequeue();
+        que.dequeue();
+
+        System.out.println(que.first.data);
+        System.out.println(que.last.data);
+
+        */
+
+
     }
 }
