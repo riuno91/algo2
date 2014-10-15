@@ -61,6 +61,9 @@ public class PriorityQueue extends  DynamicArray{
         minBinHeap.rem();
 
         nextpos--;
+        kontroll();
+        organizeHeap();
+        kontroll();
         return n;
     }
 
@@ -73,26 +76,27 @@ public class PriorityQueue extends  DynamicArray{
     }
 
     private void organizeHeap(){
-        int smalPos = 1, leftParent = 2,  rightParent = 3;
+        int curPos = 1;
 
         while(true){
+            int leftParent = 2*curPos,  rightParent = 2*curPos + 1, curValue = minBinHeap.get(1),
+                    smallestPos = curPos;
 
-            if (leftParent < minBinHeap.len() && minBinHeap.get(leftParent) < minBinHeap.get(smalPos)) {
-                smalPos = leftParent;
+            if (leftParent <(nextpos-1) && minBinHeap.get(leftParent) < minBinHeap.get(smallestPos)) {
+                smallestPos = leftParent;
             }
 
-            if (rightParent < minBinHeap.len() && minBinHeap.get(rightParent) < minBinHeap.get(smalPos)) {
-                smalPos = rightParent;
+            if (rightParent < (nextpos-1) && minBinHeap.get(rightParent) < minBinHeap.get(smallestPos)) {
+                smallestPos = rightParent;
             }
 
-            if (smalPos != 1){
-                int smalValue = minBinHeap.get(smalPos);
-                int firstVal = minBinHeap.get(1);
-
-                minBinHeap.put(firstVal,smalPos);
-                minBinHeap.put(smalValue, 1);
-                smalPos = 1; leftParent = 2;  rightParent = 3;
-
+            if (curPos != smallestPos){
+                int smaller = minBinHeap.get(smallestPos);
+                /// mille panen ja kuhu panen
+                minBinHeap.put(minBinHeap.get(curPos),smallestPos);
+                minBinHeap.put(smaller,curPos);
+                curPos = smallestPos;
+                kontroll();
             }else break;
 
 
