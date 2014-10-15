@@ -19,6 +19,7 @@ public class MagazineArray extends DynamicArray {
      * @param x
      */
     public void push(int x){
+
         super.add(x);
     }
 
