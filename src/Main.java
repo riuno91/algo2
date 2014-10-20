@@ -7,5 +7,6 @@ public class Main {
         Test t = new Test();
         t.testStack();
         t.testPriorityQueue();
+        t.testQueue();
     }
 }

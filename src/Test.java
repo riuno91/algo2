@@ -1,3 +1,4 @@
+import Queue.Queue;
 import teine.kodutöö.algoritmid.implementations.MagazineArray;
 import teine.kodutöö.algoritmid.implementations.PriorityQueue;
 
@@ -62,4 +63,19 @@ public class Test {
     }
 
 
+    public void testQueue (){
+        int k = 1;
+        Queue queue = new Queue();
+        queue.enqueue(k);
+
+        while (!queue.isEmpty()){
+            k = queue.dequeue();
+
+            if (k <= 20){
+                writer("queue.out",k);
+                queue.enqueue(2*k + 1);
+                queue.enqueue(2*k);
+            }else break;
+        }
+    }
 }
