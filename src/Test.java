@@ -1,4 +1,5 @@
 import teine.kodutöö.algoritmid.implementations.MagazineArray;
+import teine.kodutöö.algoritmid.implementations.PriorityQueue;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -10,7 +11,7 @@ import java.io.WriteAbortedException;
  */
 public class Test {
 
-    private static void Writer(String fname, int k) {
+    private static void writer(String fname, int k) {
         System.out.println(k);
         long result; // long, mis väärustatakse listis oleva fibonaccy arvuga.
         try {// try catch faili kirjutamiseks
@@ -25,22 +26,40 @@ public class Test {
     }
 
     public void testStack (){
+
         int k;
         MagazineArray ma = new MagazineArray();
         ma.push(1);
 
         while (!ma.isEmpty()){
-            k = ma.get(0);
-            ma.pop();
+            k = ma.pop();
 
             if (k <= 20){
-                ma.push(2*k);
+                writer("stack.out", k);
                 ma.push(2*k + 1);
-            }
-            Writer("stack.out", k);
+                ma.push(2 * k);
+            }else break;
 
         }
 
     }
+
+    public void testPriorityQueue (){
+        int k = 1;
+        PriorityQueue minHeap = new PriorityQueue();
+        minHeap.enqueue(k);
+
+        while (!minHeap.isEmpty()){
+            k = minHeap.dequeue();
+
+            if (k <= 20){
+                writer("priority_queue.out",k);
+                minHeap.enqueue(2*k + 1);
+                minHeap.enqueue(2*k);
+            }else break;
+        }
+
+    }
+
 
 }

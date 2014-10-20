@@ -61,15 +61,14 @@ public class PriorityQueue extends  DynamicArray{
         minBinHeap.rem();
 
         nextpos--;
-        kontroll();
         organizeHeap();
-        kontroll();
+
         return n;
     }
 
     public boolean isEmpty(){
 
-        if ((super.len()-1) == 0){
+        if ((super.len()-1) == 1){
             return true;
         }else return false;
 
@@ -96,7 +95,7 @@ public class PriorityQueue extends  DynamicArray{
                 minBinHeap.put(minBinHeap.get(curPos),smallestPos);
                 minBinHeap.put(smaller,curPos);
                 curPos = smallestPos;
-                kontroll();
+
             }else break;
 
 
@@ -104,12 +103,12 @@ public class PriorityQueue extends  DynamicArray{
 
     }
 
-    private void kontroll(){
+   /* public void kontroll(){
         for (int i = 1; i < minBinHeap.len()-1;i++){
             System.out.print(minBinHeap.get(i) + " ");
         }
 
         System.out.println();
-    }
+    }*/
 
 }
