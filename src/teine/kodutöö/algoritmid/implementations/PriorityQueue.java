@@ -81,8 +81,7 @@ public class PriorityQueue extends  DynamicArray{
      * @return tagastab tõeväärtuse, kas kuhi on tühi või mitte
      */
     public boolean isEmpty(){
-
-        if ((super.len()-1) == 1){
+        if (nextpos == 1){
             return true;
         }else return false;
 

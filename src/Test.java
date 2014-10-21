@@ -34,12 +34,11 @@ public class Test {
 
         while (!ma.isEmpty()){
             k = ma.pop();
-
+            writer("stack.out", k);
             if (k <= 20){
-                writer("stack.out", k);
                 ma.push(2*k + 1);
                 ma.push(2 * k);
-            }else break;
+            }
 
         }
 
@@ -52,12 +51,11 @@ public class Test {
 
         while (!minHeap.isEmpty()){
             k = minHeap.dequeue();
-
+            writer("priority_queue.out",k);
             if (k <= 20){
-                writer("priority_queue.out",k);
                 minHeap.enqueue(2*k + 1);
                 minHeap.enqueue(2*k);
-            }else break;
+            }
         }
 
     }
@@ -69,13 +67,11 @@ public class Test {
         queue.enqueue(k);
 
         while (!queue.isEmpty()){
-            k = queue.dequeue();
-
+            k = queue.dequeue();            writer("queue.out",k);
             if (k <= 20){
-                writer("queue.out",k);
                 queue.enqueue(2*k + 1);
                 queue.enqueue(2*k);
-            }else break;
+            }
         }
     }
 }

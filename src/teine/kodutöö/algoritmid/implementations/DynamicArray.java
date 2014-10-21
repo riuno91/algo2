@@ -11,18 +11,13 @@ import java.util.Arrays;
  */
 public class DynamicArray {
     private int[] array;
-    private int size;
+    public int size;
 
     /**
      * konstruktor
      * create()
      */
-    public DynamicArray(int n){
-        array = new int[n];
-        size = -1;
-    }
-
-    public DynamicArray(){
+     public DynamicArray(){
         array = new int[0];
         size = -1;
     }
@@ -93,7 +88,7 @@ public class DynamicArray {
      * @return
      */
     public int len(){
-        return array.length + 1;
+        return size + 1;
     }
 
 

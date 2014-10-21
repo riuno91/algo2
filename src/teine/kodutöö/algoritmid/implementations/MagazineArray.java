@@ -38,7 +38,7 @@ public class MagazineArray extends DynamicArray {
      */
     public boolean isEmpty(){
 
-        if ((super.len()-1) == 0){
+        if ((super.len()) <= 0){
             return true;
         }else return false;
 
