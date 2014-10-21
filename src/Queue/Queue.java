@@ -8,7 +8,7 @@ package Queue;
 
 public class Queue {
 
-    QueueObject first;
+    QueueObject first;  //points to first object of list; null for empty list
     QueueObject last;
 
     /**
@@ -52,18 +52,18 @@ public class Queue {
     public int dequeue() {
         if (first != null) {
 
-            int ret = first.data;
+            int returneddata = first.data;
 
             QueueObject tmp = first;
 
-            first = first.next;
+            first = first.next;           //paneme first viitama järgmisele elemendile
 
             if (first == null) {
 
                 last = null;
 
             }
-            return ret;
+            return returneddata;
 
         }
         else
