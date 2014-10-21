@@ -2,7 +2,7 @@ package teine.kodutöö.algoritmid.implementations;
 
 /**
  * (stack - LIFO) tuleb realiseerida dünaamilise massiivi abil.
- * Created by Riuno on 14.10.2014.
+ * Created by Rauno-Sten Reile 104468IAPB on 14.10.2014.
  */
 public class MagazineArray extends DynamicArray {
 
@@ -19,6 +19,7 @@ public class MagazineArray extends DynamicArray {
     public void push(int x){
 
         super.add(x);
+
     }
 
     /**

@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.io.WriteAbortedException;
 
 /**
- * Created by Riuno on 19.10.2014.
+ * Created by Rauno-Sten Reile 104468IAPB && Henri Liiv on 19.10.2014.
  */
 public class Test {
 

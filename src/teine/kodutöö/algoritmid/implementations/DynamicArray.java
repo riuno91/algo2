@@ -3,7 +3,7 @@ package teine.kodutöö.algoritmid.implementations;
 import java.util.Arrays;
 
 /**
- * Created by Henri on 10/14/2014.
+ * Created by Henri Liiv on 10/14/2014.
  *
  * Dünaamiline massiiv hoiab andmeid massiivis, mille mahtu suurendatakse kaks
  * korda massiivi täitumisel ja vähendatakse kaks korda, kui täituvus langeb alla 1/4

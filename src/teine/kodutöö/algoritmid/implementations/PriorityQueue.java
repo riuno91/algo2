@@ -1,18 +1,20 @@
 package teine.kodutöö.algoritmid.implementations;
 
-import com.sun.xml.internal.bind.v2.TODO;
 
 /**
- * Created by Riuno on 14.10.2014.
+ * Created by Rauno-Sten Reile 104468IAPB on 14.10.2014.
  */
 public class PriorityQueue extends  DynamicArray{
     DynamicArray minBinHeap;
     int nextpos;
+
     /**
-     *
+     *Loome minHeapi,
+     *lisame esimese elemendi massiivi (suvaline), et alates positsioonist 1 hakataks t2itma
+     * määrame järgmise positsiooniks 1
      */
     public PriorityQueue() {
-        // lisame esimese elemendi, et alates yhest hakataks t2itma
+
         minBinHeap = new DynamicArray();
         minBinHeap.add(-11);
         nextpos = 1;
@@ -20,7 +22,7 @@ public class PriorityQueue extends  DynamicArray{
 
     /**
      * lisame elemendi järjekorda
-     * @param x
+     * @param x - number, mis lisatakse minimaalsesse kuhja
      */
     public void enqueue (int x){
 
@@ -29,18 +31,19 @@ public class PriorityQueue extends  DynamicArray{
 
         while(true){
 
-            int upParentPos, parent;  // int-d k6rval oleva elemendi jaoks
+            int upParentPos, parent;  // int-d ülemelementi jaoks
 
             //kontrollin ega element ei ole esimene
             if (positsion <= 1){
                 break;
             }
+
             upParentPos = positsion/2;   // v6tan ylemelemendi positsiooni (bin kuhjal alati ylemine postisoon /2 v2iksem)
             parent = minBinHeap.get(upParentPos); //v6tan elemendi arvulise v22rtuse
 
-            if(parent < x){//kui parent on v2iksem x-st(min kuhja reegel), siis l6petan
+            if(parent < x){//kui ylemin parent on v2iksem x-st(min kuhja reegel), siis l6petan
                 break;
-            }else{ // vastasel korral vahetan positsioonid
+            }else{ // vastasel korral vahetan positsioonid parrentiga
                 minBinHeap.put(x, upParentPos);
                 minBinHeap.put(parent, positsion);
             }
@@ -48,24 +51,35 @@ public class PriorityQueue extends  DynamicArray{
             positsion = upParentPos; // m22ran elemendi positsiooniks ylemelemendi positsiooni
         }
 
-        nextpos++;
+        nextpos++; // suurendan järmiseks elemendiks kohta
     }
 
+    /**
+     * Antakse välja kuhja tipus olev element
+     * @return - tagastan tipus oleva, minimaalse elemendi
+     */
     public int dequeue(){
 
         int n = 0, last = 0; //int-d, yks viimane teine esimene element
 
-        n = minBinHeap.get(1); // v6tan esimese ja viimase elemendi m2llu
-        last = minBinHeap.get(nextpos-1);
-        minBinHeap.put(last,1);
-        minBinHeap.rem();
+        n = minBinHeap.get(1); // v6tan esimese m2llu
 
-        nextpos--;
-        organizeHeap();
+        last = minBinHeap.get(nextpos-1); // võtan viimase LISATUD elemendi mällu
 
-        return n;
+        minBinHeap.put(last,1); // panen esimeseks elemendiks viimase lisatud elemendi
+        minBinHeap.rem();// eemaldan kuhjast viimase elemend (kuna ta nüüd on tipus)
+
+        nextpos--; //vähendan järgmise elemendi kohta (eelmine viimane element läks tippu)
+        organizeHeap(); //korrastan kuhja
+
+        return n; //tagastan vana tipus olnud elemendi
     }
 
+    /**
+     * Meetod, mis kontrollib, kas kuhi on tühi või mitte, seejuures ei arvestata massiivis element kohal 0 ehk siis
+     * kuhi ei ole tühi, kui seal on rohkem kui 1 element
+     * @return tagastab tõeväärtuse, kas kuhi on tühi või mitte
+     */
     public boolean isEmpty(){
 
         if ((super.len()-1) == 1){
@@ -74,30 +88,41 @@ public class PriorityQueue extends  DynamicArray{
 
     }
 
+    /**
+     * Meetod, mis korrastab peale kuhjast elemendi väljastamist kuhja vastavalt minimaalse kuhja reglemendile.
+     *
+     */
     private void organizeHeap(){
-        int curPos = 1;
+        int curPos = 1; //esimeseks kohaks valitakse 1 (tipp, kus element väljastati)
 
+
+        //tsükkel, mis korrastab kuhja
         while(true){
-            int leftParent = 2*curPos,  rightParent = 2*curPos + 1, curValue = minBinHeap.get(1),
-                    smallestPos = curPos;
+            int leftParent = 2*curPos,  rightParent = 2*curPos + 1, smallestPos = curPos;
 
+            //võrreldakse, kas vasak parrent on väiksem, kui hetkel võrreldav element, kui jah, siis
+            //märgitakse väikseimaks vasak parrent
             if (leftParent <(nextpos-1) && minBinHeap.get(leftParent) < minBinHeap.get(smallestPos)) {
                 smallestPos = leftParent;
             }
 
+            //võrreldakse, kas parem parrent on väiksem, kui hetkel võrreldav element, kui jah, siis
+            //märgitakse väikseimaks parem parrent
             if (rightParent < (nextpos-1) && minBinHeap.get(rightParent) < minBinHeap.get(smallestPos)) {
                 smallestPos = rightParent;
             }
 
+            // kui left või right parrent on väiksem, kui hetkel võrreldav element, siis tehakse asendus
+
             if (curPos != smallestPos){
                 int smaller = minBinHeap.get(smallestPos);
-                /// mille panen ja kuhu panen
+                //asendan kaks elementi
                 minBinHeap.put(minBinHeap.get(curPos),smallestPos);
                 minBinHeap.put(smaller,curPos);
+                // märgin hetkepositsiooniks uue väikseima elemendi positsiooni
                 curPos = smallestPos;
 
             }else break;
-
 
         }
 
